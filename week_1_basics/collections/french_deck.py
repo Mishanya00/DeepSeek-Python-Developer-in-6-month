@@ -1,5 +1,4 @@
 from collections import namedtuple
-import random
 
 Card = namedtuple("Card", ["rank", "suit"])
 
@@ -14,11 +13,16 @@ class FrenchDeck:
     def __len__(self):
         return len(self._cards)
 
+    # I can implement __reversed__ or __len__ + __init__
+    def __reversed__(self):
+        for item in reversed(self._cards):
+            yield item
+
     def __getitem__(self, pos):
         return self._cards[pos]
 
 
 deck = FrenchDeck()
 
-for card in deck:
+for card in reversed(deck):
     print(card)
