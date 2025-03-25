@@ -1,6 +1,5 @@
 import sys
 from datetime import datetime
-from datetime import date
 
 
 def is_valid_date(date_string):
