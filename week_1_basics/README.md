@@ -6,7 +6,7 @@ To master Python's standard libraries, which are essential for a Python develope
 
 ---
 
-### 1. **`os` Module (2 Days)**
+### 1. **`os` Module (1-2 Days)**
 
 - **Goal:** Learn to work with the file system.
 - **Tasks:**
@@ -25,7 +25,7 @@ To master Python's standard libraries, which are essential for a Python develope
 
 ---
 
-### 3. **`datetime` Module (2 Days)**
+### 3. **`datetime` Module (1-2 Days)**
 
 - **Goal:** Learn to work with dates and times.
 - **Tasks:**
@@ -35,7 +35,7 @@ To master Python's standard libraries, which are essential for a Python develope
 
 ---
 
-### 4. **`collections` Module (2 Days)**
+### 4. **`collections` Module (1-2 Days)**
 
 - **Goal:** Use specialized data types like `defaultdict`, `Counter`, and `deque`.
 - **Tasks:**
@@ -45,7 +45,7 @@ To master Python's standard libraries, which are essential for a Python develope
 
 ---
 
-### 5. **`itertools` Module (2 Days)**
+### 5. **`itertools` Module (1-2 Days)**
 
 - **Goal:** Master powerful tools for working with iterators.
 - **Tasks:**
@@ -55,7 +55,7 @@ To master Python's standard libraries, which are essential for a Python develope
 
 ---
 
-### 6. **`re` Module (2 Days)**
+### 6. **`re` Module (1-2 Days)**
 
 - **Goal:** Learn to work with regular expressions.
 - **Tasks:**

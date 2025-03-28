@@ -12,9 +12,9 @@ class DequeCache:
         self._elements.remove(self._elements[index])
         self._elements.append(res)
         return res
-    
+
     def __repr__(self):
-        return ', '.join(list(map(str, self._elements)))
+        return ", ".join(list(map(str, self._elements)))
 
     def add(self, obj):
         if obj in self._elements:
@@ -27,6 +27,7 @@ class DequeCache:
                 self._elements.popleft()
                 self._elements.append(obj)
 
+
 cache = DequeCache(5)
 
 for i in range(20):
@@ -35,7 +36,7 @@ for i in range(20):
 
 print(cache)
 
-print('Here is get:')
+print("Here is get:")
 cache[2]
 print(cache)
 cache[2]
