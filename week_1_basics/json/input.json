@@ -1,0 +1,32 @@
+[
+    {
+        "nums": [
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "floats": [
+            1.1,
+            2.2,
+            3.3,
+            4.4,
+            5.5
+        ],
+        "strings": [
+            "hello",
+            "goodbye",
+            "goodboy"
+        ]
+    },
+    {
+        "name": "Alex",
+        "surname": "Konig",
+        "phone": "7938492949",
+        "email": "myemail@gmail.com"
+    },
+    {
+        "100": 500
+    }
+]
