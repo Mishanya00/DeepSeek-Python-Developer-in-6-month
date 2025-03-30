@@ -79,7 +79,6 @@ To master Python's standard libraries, which are essential for a Python develope
 - **Goal:** Set up and use logging effectively.
 - **Tasks:**
   1. Write a script that logs messages of different levels (DEBUG, INFO, WARNING, ERROR, CRITICAL) to a file.
-  2. Create a program that uses logging to track the progress of a long-running operation.
 
 ---
 
