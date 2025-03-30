@@ -1,6 +1,8 @@
 def decorator(call):
     def wrapper(*args, **kwargs):
+        print('Call started!')
         r = call(*args, **kwargs)
+        print('Call Finished!')
         return r
 
     return wrapper
