@@ -42,7 +42,7 @@
    - Email format
    - Password length (min 8 chars)
 3. Build a fake DB with list/dict storage
-4. Add search with query params (`/items?price_lt=50`)
+4. Add search with query params (`/users?username=test`)
 
 ---
 
