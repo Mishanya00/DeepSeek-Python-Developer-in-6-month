@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome, {{ user_email }}!</h1>
+        <p>You have successfully logged in.</p>
+
+        <!-- File Upload Section -->
+        <div class="upload-section">
+            <h3>Upload a File</h3>
+            <form action="/uploadfile" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".txt">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <a href="/" class="logout-btn">Log Out</a>
+    </div>
+</body>
+</html>
