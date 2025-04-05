@@ -6,7 +6,9 @@ import asyncio
 
 import chardet
 
-from fastapi import FastAPI, Request, Form, File, UploadFile, HTTPException, BackgroundTasks
+import uvicorn
+
+from fastapi import FastAPI, Request, Form, File, UploadFile, HTTPException, BackgroundTasks, Depends, Header
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -14,6 +16,7 @@ from fastapi.staticfiles import StaticFiles
 
 EMAIL_PATTERN = r"\b[\w\-\.]+@(?:[\w-]+\.)+[\w\-]{2,4}\b"
 UPLOAD_DIR = "file_storage"
+SHOW_FILES_API_KEY = "fast{s3cr3t_ap1_k3y}"
 
 
 if not os.path.exists(UPLOAD_DIR):
@@ -87,3 +90,19 @@ async def create_upload_file(background_tasks: BackgroundTasks, file: Annotated[
 
         return {"message": f"file {file.filename} has been successfully uploaded."}
     
+
+async def verify_api_key(api_key: str = Header(..., alias="X-API-Key")):
+    if api_key != SHOW_FILES_API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid API Key")
+    return True
+
+
+@app.get("/get-all", dependencies=[Depends(verify_api_key)])
+def get_all_files():
+    '''Protected endpoint'''
+    files = next(os.walk(UPLOAD_DIR))[2]
+    return {"files": ", ".join(files)}
+
+
+if __name__ == '__main__':
+    uvicorn.run("main:app", reload=True)
