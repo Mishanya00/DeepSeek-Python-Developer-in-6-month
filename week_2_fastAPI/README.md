@@ -98,8 +98,7 @@
 
 1. Implement JWT token generation
 2. Add protected route (requires auth)
-3. Create password hashing
-4. Set up token refresh endpoint
+3. Set up token refresh endpoint
 
 ---
 
