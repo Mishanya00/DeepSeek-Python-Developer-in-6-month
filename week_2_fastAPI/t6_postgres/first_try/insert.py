@@ -14,9 +14,10 @@ def insert_vendor(vendor_name):
             with conn.cursor() as cur:
                 cur.execute(sql, (vendor_name,))
 
-                rows = cur.fetchone()
-                if rows:
-                    vendor_id = rows[0]
+                # Unnecessary part
+                # rows = cur.fetchone()
+                # if rows:
+                #     vendor_id = rows[0]
                 
                 conn.commit()
     except (Exception, psycopg.DatabaseError) as error:
@@ -41,6 +42,8 @@ def insert_many_vendors(vendor_list):
 
 
 if __name__ == "__main__":
+    insert_vendor('Integral Corp.')
+
     insert_many_vendors([
         ('AKM Semiconductor Inc.',),
         ('Asahi Glass Co Ltd.',),
