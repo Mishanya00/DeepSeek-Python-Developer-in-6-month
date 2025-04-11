@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Sensitive DB info
+*database.ini
+
 # Distribution / packaging
 .Python
 build/

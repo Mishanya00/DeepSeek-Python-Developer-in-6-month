@@ -102,25 +102,34 @@
 
 ---
 
-## Day 6: Testing & Deployment
+## Days 6-7: PostgreSQL with FastAPI
 
 **Topics:**
 
-- pytest integration
-- TestClient usage
-- Docker packaging
-- Deployment options
+- Raw SQL queries (asyncpg)
+- SQLAlchemy ORM setup
+- Connection pooling
 
 **Tasks:**
 
-1. Write tests for 3 endpoints
-2. Dockerize your app
-3. Deploy to Render/Heroku
-4. Benchmark with locust (100 req/s)
+1. Raw SQL Implementation
+- Create 1 endpoint using asyncpg that:
+  - `GET /products`: Returns all rows from a products table
+2. SQLAlchemy Implementation
+- Set up SQLAlchemy models for products
+- Create 1 endpoint that:
+  - `POST /products`: Adds new product using ORM
+3. Connection Health Check
+- Add `/health` endpoint that verifies database connectivity
+
+(Optional)
+4. 🐳 Dockerize (only if comfortable)
+
+- Add PostgreSQL container in `docker-compose.yml`
 
 ---
 
-## Day 7: Project Day
+## Project to practice
 
 **Final Project:**
 Build a Bookstore API with:

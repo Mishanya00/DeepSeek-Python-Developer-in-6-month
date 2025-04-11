@@ -14,6 +14,7 @@ from pydantic import BaseModel
 SECRET_KEY = "50479bd30f3fc3ccc005b2595fd9bfba25474d9bf723986b59212e9b9a2eef15"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 1
+REFRESH_TOKEN_EXPIRE_MINUTES = 5
 
 
 fake_users_db = {
@@ -29,6 +30,7 @@ fake_users_db = {
 
 class TokenSchema(BaseModel):
     access_token: str
+    refresh_token: str
     token_type: str
 
 
@@ -66,7 +68,7 @@ def get_user(db, username: str):
     if username in db:
         user_dict = db[username]
         return DBUserSchema(**user_dict)
-    
+
 
 def authenticate_user(fake_db, username: str, password: str):
     user = get_user(fake_db, username)
@@ -88,9 +90,22 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
+def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        expire = datetime.now(timezone.utc) + timedelta(
+            minutes=REFRESH_TOKEN_EXPIRE_MINUTES
+        )
+    to_encode.update({"exp": expire, "type": "refresh"})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
+
+
 async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
     credentials_exception = HTTPException(
-        status_code = status.HTTP_401_UNAUTHORIZED,
+        status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
@@ -127,11 +142,62 @@ async def login_for_access_token(
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
+
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
-    return TokenSchema(access_token=access_token, token_type="bearer")
+
+    # refresh_token_expires = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
+    refresh_token_expires = timedelta(minutes=REFRESH_TOKEN_EXPIRE_MINUTES)
+    refresh_token = create_refresh_token(
+        data={"sub": user.username}, expires_delta=refresh_token_expires
+    )
+
+    return TokenSchema(
+        access_token=access_token, refresh_token=refresh_token, token_type="bearer"
+    )
+
+
+@app.post("/refresh")
+async def refresh_token(refresh_token: str) -> TokenSchema:
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate refresh token",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(refresh_token, SECRET_KEY, algorithms=[ALGORITHM])
+
+        if payload.get("type") != "refresh":
+            raise credentials_exception
+
+        username = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+
+        user = get_user(fake_users_db, username=username)
+        if user is None:
+            raise credentials_exception
+
+        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        access_token = create_access_token(
+            data={"sub": user.username}, expires_delta=access_token_expires
+        )
+
+        refresh_token_expires = timedelta(minutes=REFRESH_TOKEN_EXPIRE_MINUTES)
+        new_refresh_token = create_refresh_token(
+            data={"sub": user.username}, expires_delta=refresh_token_expires
+        )
+
+        return TokenSchema(
+            access_token=access_token,
+            refresh_token=new_refresh_token,
+            token_type="bearer",
+        )
+
+    except InvalidTokenError:
+        raise credentials_exception
 
 
 @app.get("/users/me")
