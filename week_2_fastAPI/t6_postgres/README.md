@@ -2,23 +2,11 @@
 
 **Topics:**
 
-- Raw SQL queries (asyncpg)
-- SQLAlchemy ORM setup
-- Connection pooling
+- Raw SQL queries (asyncpg or psycopg)
 
 **Tasks:**
 
 1. Raw SQL Implementation
-- Create 1 endpoint using asyncpg that:
-  - `GET /products`: Returns all rows from a products table
-2. SQLAlchemy Implementation
-- Set up SQLAlchemy models for products
-- Create 1 endpoint that:
-  - `POST /products`: Adds new product using ORM
-3. Connection Health Check
-- Add `/health` endpoint that verifies database connectivity
-
-(Optional)
-4. 🐳 Dockerize (only if comfortable)
-
-- Add PostgreSQL container in `docker-compose.yml`
+- function to load config and to create connection
+- function to create tables and insert into them
+- function to update values
