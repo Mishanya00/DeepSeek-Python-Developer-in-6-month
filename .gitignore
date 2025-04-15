@@ -9,6 +9,9 @@ __pycache__/
 # Sensitive DB info
 *database.ini
 
+*pylintrc
+*.vscode
+
 # Distribution / packaging
 .Python
 build/
@@ -175,3 +178,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+week_1_basics/.vscode/settings.json

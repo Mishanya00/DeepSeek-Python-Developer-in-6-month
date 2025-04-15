@@ -8,7 +8,6 @@ from datetime import datetime
 
 
 async def main():
-
     # database.ini stores password for postgres user
     with open("database.ini", encoding="utf-8") as f:
         my_password = f.read()
