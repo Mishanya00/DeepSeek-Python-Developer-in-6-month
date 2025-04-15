@@ -13,13 +13,6 @@
     "python.analysis.importFormat": "absolute",
     "python.analysis.enablePytestSupport": true,
     "python.analysis.indexing": true,
-    "python.analysis.packageIndexDepths": [
-        {
-            "name": "django",
-            "depth": 3,
-            "includeAllSymbols": true
-        }
-    ],
       
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
