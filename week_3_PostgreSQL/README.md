@@ -50,7 +50,7 @@ Build CLI tool (using `argparse`) to:
 1. Add 10k dummy users  
 2. Compare query speed:  
    - Without index  
-   - With index on `email` field
+   - With index on `name` field
 
 ---
 

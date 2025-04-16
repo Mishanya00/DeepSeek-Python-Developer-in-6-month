@@ -1,3 +1,5 @@
+# Separate file for config for week3 so that I dont need to repeat it each day
+
 import os
 from configparser import ConfigParser
 

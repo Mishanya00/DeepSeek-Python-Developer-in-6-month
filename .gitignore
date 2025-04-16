@@ -9,7 +9,7 @@ __pycache__/
 # Sensitive DB info
 *database.ini
 
-*pylintrc
+.pylintrc
 *.vscode
 
 # Distribution / packaging
