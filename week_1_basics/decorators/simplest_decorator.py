@@ -7,12 +7,15 @@ def decorator(call):
 
     return wrapper
 
+
 def call(a: int) -> str:
     return str(a)
+
 
 @decorator
 def call2(a: int) -> str:
     return str(a)
+
 
 decorated = decorated_call = decorator(call)
 decorated2 = call2

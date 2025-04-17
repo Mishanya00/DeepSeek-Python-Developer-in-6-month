@@ -1,5 +1,6 @@
 from functools import wraps
 
+
 def decorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -9,9 +10,11 @@ def decorator(func):
         return r
     return wrapper
 
+
 @decorator
 def call(a: int) -> str:
     return str(a)
+
 
 decorated = call
 
