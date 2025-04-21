@@ -14,14 +14,14 @@ random_names_to_select2 = [choice(popular_names[100:375:]) for i in range(10**4)
 
 async def drop_table(pool: asyncpg.Pool):
     async with pool.acquire() as aconn:
-        await aconn.execute('DROP TABLE IF EXISTS users')
+        await aconn.execute('DROP TABLE IF EXISTS users_indexes')
 
 
 async def create_table(pool: asyncpg.Pool):
     async with pool.acquire() as aconn:
         await aconn.execute(
             """
-                CREATE TABLE IF NOT EXISTS users (
+                CREATE TABLE IF NOT EXISTS users_indexes (
                         id SERIAL PRIMARY KEY,
                         name TEXT,
                         signup_date DATE
@@ -32,19 +32,19 @@ async def create_table(pool: asyncpg.Pool):
 
 async def create_index(pool: asyncpg.Pool):
     async with pool.acquire() as aconn:
-        # await aconn.execute('CREATE INDEX IF NOT EXISTS idx_name ON users USING HASH(name)')
-        await aconn.execute('CREATE INDEX IF NOT EXISTS idx_name ON users(name)')
+        # await aconn.execute('CREATE INDEX IF NOT EXISTS idx_name ON users_indexes USING HASH(name)')
+        await aconn.execute('CREATE INDEX IF NOT EXISTS idx_name ON users_indexes(name)')
 
 
 async def select_user(pool: asyncpg.Pool, name: str):
     async with pool.acquire() as aconn:
-        result = await aconn.fetchrow('SELECT id, name, signup_date FROM users WHERE name = $1', name)
+        result = await aconn.fetchrow('SELECT id, name, signup_date FROM users_indexes WHERE name = $1', name)
         return result
     
 
 async def create_user(pool: asyncpg.Pool, name: str):
     async with pool.acquire() as aconn:
-        result = await aconn.fetchrow(f'INSERT INTO users(name, signup_date) VALUES ($1, $2)', name, datetime.now())
+        result = await aconn.fetchrow(f'INSERT INTO users_indexes(name, signup_date) VALUES ($1, $2)', name, datetime.now())
         return result
     
 
