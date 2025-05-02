@@ -1,8 +1,8 @@
+from functools import lru_cache
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, Header, HTTPException
-
-app = FastAPI()
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 fake_db_users = [
@@ -19,8 +19,25 @@ fake_db_users = [
 ]
 
 
-def api_key(key: Annotated[str, Header(min_length=32)]):
-        if key != 'secret_key_of_length_at_least_32_chars_haha_98kdl2m42l':
+# It automatically takes APP_NAME variable value, I didnt know :)
+# To test in Win CMD: set APP_NAME=Wow-APP
+class Settings(BaseSettings):
+    app_name: str = "W4D1 (Week 4 Day 1) App"
+    api_key: str = "incorrect_api_key_by_default_xxxxxxx"
+
+    model_config = SettingsConfigDict(env_file=".env")
+
+
+@lru_cache
+def get_settings():
+    return Settings()
+
+
+app = FastAPI()
+
+
+def api_key(key: Annotated[str, Header(min_length=32)], settings: Annotated[Settings, Depends(get_settings)]):
+        if key != settings.api_key:
             raise HTTPException(status_code=400, detail="API key is invalid!")        
         return key
 
@@ -34,6 +51,15 @@ class UserFilter:
 @app.get('/')
 async def hello():
     return {"message": "Hello!"}
+
+
+@app.get('/config_info')
+async def get_config(settings: Annotated[Settings, Depends(get_settings)]):
+    # Never do it anywhere ! :) Its only for educational purpose
+    return {
+         "app name": settings.app_name,
+         "api key": settings.api_key
+    }
 
 
 @app.get('/users', dependencies=[Depends(api_key)])
