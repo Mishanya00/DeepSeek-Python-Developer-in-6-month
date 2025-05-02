@@ -42,7 +42,8 @@ json
 ### Day 4: Background Processing
 
 **Goal:** Offload heavy tasks
-🔗 BackgroundTasks Docs
+🔗 [BackgroundTasks Docs](https://fastapi.tiangolo.com/tutorial/background-tasks/)
+🔗 [Celery Basics](https://docs.celeryq.dev/en/stable/getting-started/introduction.html)
 ✅ **Task:**
 
 1. Implement email notification task
@@ -51,12 +52,11 @@ json
 ### Day 5: Real-Time Basics
 
 **Goal:** WebSocket fundamentals
-🔗 WebSockets Guide
+🔗 [WebSockets Guide](https://fastapi.tiangolo.com/advanced/websockets/)
 ✅ **Task:**
 
-    Build /ws/status endpoint
-    
-    Implement connection heartbeat
+1. Build /ws/status endpoint 
+2. Implement connection heartbeat
 
 ### 🛠️ Required Tools
 bash
