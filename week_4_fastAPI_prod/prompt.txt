@@ -1,0 +1,12 @@
+Hi! After a month of learning Python I managed to get to internship! You helped a lot to achieve it!
+So now I need to continue growing twice as hard, so I need a very comprehensive plan for 4th week of
+Python Backend Developer in 6 month plan. Here are the topics I've already learned so that I dont need them to learn:
+1st week: collections, datetime, decoratorsr, itertools, json,
+logging, os, re, sys.
+2nd week, fastapi: endpoints, request handling, CRUD, pydantic models, 
+templates, Annotated, layered model.
+3rd week, postgreSQL: connection to Postgres, asyncpg & psychopg3, 
+CRUD queries, indexes, joins, transactions, grouping, EXPLAIN ANALYZE. 
+Other topics learned: Docker. Keep in mind, that I study at university and now visit internship so
+I dont have so much time devoted to your plan. It should be as straight as possible.
+Links to docs or materials of daily plan would be a nice addition. Plan should be created as .md file. Huge Thanks!

@@ -1,0 +1,9 @@
+This text is a remainder for DeepSeek's context memory of topics I've already learned & tried.
+
+1st week: collections, datetime, decoratorsr, itertools, json,
+logging, os, re, sys.
+2nd week, fastapi: endpoints, request handling, CRUD, pydantic models, 
+templates, Annotated, layered model.
+3rd week, postgreSQL: connection to Postgres, asyncpg & psychopg3, 
+CRUD queries, indexes, joins, transactions and grouping. 
+Other topics learned: Docker

@@ -45,7 +45,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 
-logger_obj = Logger(func)
+# logger_obj = Logger(func)
 
-nums = [func() for i in range(25)]
-nums2 = [func_manual(0.001, 0.03) for i in range(50)]
+nums = [func() for i in range(5)]
+nums2 = [func_manual(0.001, 0.03) for i in range(5)]
