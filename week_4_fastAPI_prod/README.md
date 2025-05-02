@@ -17,56 +17,54 @@
     return Settings()
    ```
 
-Day 2: Essential Middleware
+### Day 2: Essential Middleware
 
-Goal: Standardize cross-cutting concerns
-🔗 Middleware Docs
-✅ Task:
+**Goal:** Standardize cross-cutting concerns
+🔗 [FastAPI Middleware Docs](https://fastapi.tiangolo.com/tutorial/middleware/)
+✅ **Task:**  
 
-    Add request timing middleware
-    
-    Create error handler for uniform responses:
-
+1. Add request timing middleware
+2. Create error handler for uniform responses:
+```
 json
-
 {"error": "type", "details": "message"}
+```
 
-Day 3: Redis Essentials
+### Day 3: Redis Essentials
 
-Goal: Implement response caching
-🔗 Redis Python Guide
-✅ Task:
+**Goal:** Implement response caching
+🔗 [Redis Python Guide](https://redis.io/docs/latest/)
+✅ **Task:**  
 
-    Cache frequent DB queries (TTL: 1 min)
-    
-    Add cache invalidation for writes
+1. Cache frequent DB queries (TTL: 1 min)
+2. Add cache invalidation for writes
 
-Day 4: Background Processing
+### Day 4: Background Processing
 
-Goal: Offload heavy tasks
+**Goal:** Offload heavy tasks
 🔗 BackgroundTasks Docs
-✅ Task:
+✅ **Task:**
 
-    Implement email notification task
-    
-    Add file cleanup task
+1. Implement email notification task
+2. Add file cleanup task
 
-Day 5: Real-Time Basics
+### Day 5: Real-Time Basics
 
-Goal: WebSocket fundamentals
+**Goal:** WebSocket fundamentals
 🔗 WebSockets Guide
-✅ Task:
+✅ **Task:**
 
     Build /ws/status endpoint
     
     Implement connection heartbeat
 
-🛠️ Required Tools
+### 🛠️ Required Tools
 bash
-
+```
 pip install fastapi redis python-dotenv websockets
+```
 
-📂 Daily Structure
+### 📂 Daily Structure
 Time    Activity
 0:00-0:20    Study concepts
 0:20-0:50    Implement tasks
@@ -83,7 +81,7 @@ app/
 ├── tasks/         # Day 4
 └── websockets/    # Day 5
 
-📚 Additional Resources
+### 📚 Additional Resources
 
     Production Checklist
     
