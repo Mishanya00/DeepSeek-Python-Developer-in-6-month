@@ -12,12 +12,12 @@ APP_NAME= config['APP_NAME']
 APP_PASSWORD = config['APP_PASSWORD']
 RECEPIENT = config['RECEPIENT']
 
-async def send_email(recepient: str):
+async def send_email(recepient: str, subject: str, body: str):
     msg = EmailMessage()
     msg["From"] = EMAIL
     msg["To"] = recepient
-    msg['subject'] = 'Python Automation'
-    msg.set_content("Test asynchronous email from Python")
+    msg['subject'] = subject
+    msg.set_content(body)
 
     async with SMTP(hostname="smtp.gmail.com", port=587) as smtp:
         # await smtp.starttls()
@@ -25,4 +25,4 @@ async def send_email(recepient: str):
         await smtp.send_message(msg)
 
 
-asyncio.run(send_email(RECEPIENT))
+# asyncio.run(send_email(RECEPIENT))
