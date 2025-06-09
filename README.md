@@ -1,3 +1,4 @@
+UPDATE: Work on this repo is suspended because I got into internship :) If I feel the neccesity to continue it I will do it
 # DeepSeek-Python-Developer-in-6-month
 
 Here is approximate plan from Deepseek. It'll be corrected over time, because I'm familiar with some topics and I want to put more effort on some other topics that I'm not familiar with
