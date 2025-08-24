@@ -1,4 +1,5 @@
 UPDATE: Work on this repo is suspended because I got into internship :) If I feel the neccesity to continue it I will do it
+
 UPDATE 2: After 4 month I got my first job offer!
 # DeepSeek-Python-Developer-in-6-month
 
